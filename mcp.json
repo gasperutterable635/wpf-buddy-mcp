@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "wpfbuddy-mcp": {
+      "command": "dotnet",
+      "args": [
+        "run",
+        "--project",
+        "src/WpfBuddy.Mcp.Server/WpfBuddy.Mcp.Server.csproj"
+      ]
+    }
+  }
+}

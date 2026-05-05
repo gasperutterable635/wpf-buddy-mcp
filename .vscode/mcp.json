@@ -1,0 +1,13 @@
+{
+  "servers": {
+    "wpfbuddy-mcp": {
+      "type": "stdio",
+      "command": "dotnet",
+      "args": [
+        "run",
+        "--project",
+        "${workspaceFolder}/src/WpfBuddy.Mcp.Server/WpfBuddy.Mcp.Server.csproj"
+      ]
+    }
+  }
+}
